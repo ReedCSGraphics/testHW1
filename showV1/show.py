@@ -2,7 +2,7 @@
 # showV1/show.py
 #
 # Author: Jim Fix
-# CSCI 385, Reed College, Fall 2017
+# CSCI 385: Computer Graphics, Reed College, Fall 2017
 #
 # This is a sample GLUT program that displays a tetrahedron 
 # made up of triangular facets.
@@ -65,7 +65,7 @@ def drawObject():
     if show_which == 0:
         drawTetra()
 
-    # Add your other objects for the assignment here.
+    # Add other objects for the assignment here.
 
 
 
