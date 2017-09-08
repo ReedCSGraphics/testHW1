@@ -1,6 +1,6 @@
 # Homework 1: object showcase
 
-Jim: Please install the Pillow package to run my program:
+**Jim: Please install the Pillow package to run my program:**
 
 pip3 install Pillow
 
