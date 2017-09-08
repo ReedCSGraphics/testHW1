@@ -1,5 +1,9 @@
 # Homework 1: object showcase
 
+Jim: Please install the Pillow package to run my program:
+pip3 install Pillow
+
+
 *Due: 9/8/2017*
 
 (Details about submitting this homework are coming soon!) 
