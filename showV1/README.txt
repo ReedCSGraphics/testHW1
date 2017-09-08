@@ -1,15 +1,17 @@
+I modified the showV1.
 
-showV1
+**Please install pillow before running from console:
 
-This is a demonstration of OpenGL and GLUT code
-used to render a tetrahedron. To render the object
-we wrote a function 'drawTetra' that issues a 
-series of OpenGL calls, for example, glVertex3f
-for specifying each point on the object's facets, 
-and glColor3f for specifying the color of each
-facet.
+pip3 install Pillow
 
-To run the demo, enter:
+**
 
-   python3 show.py
+My programmer's choice was a height/bump map renderer. You can press space to type in the name of a height map to render a new map (by default the program renders a volcano). Pressing 'w' or 'd' increase/decrease the magnitude of rendered map.
+included height maps:
 
+brick.jpg
+face.jpg
+mountain.jpg
+volcano.png
+
+Height maps larger than ~256x256 will probably be too slow to easily view.
