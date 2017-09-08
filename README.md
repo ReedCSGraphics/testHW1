@@ -1,4 +1,4 @@
-# Homework 1: object showcase
+# Homework 1 Response: I modified showV1
 
 **Jim: Please install the Pillow package to run my program:**
 
