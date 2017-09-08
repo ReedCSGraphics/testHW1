@@ -64,11 +64,82 @@ def drawObject():
     
     if show_which == 0:
         drawTetra()
+    elif show_which == 1:
+	drawCube()
+    elif show_which == 2:
+	draw(gen_cyllinder(100))
+    elif show_which == 3:
+	draw(gen_sphere(100))
+    elif show_which == 4:
+	drawTaurus(100)
+    else show_which == 5:
+	drawShape(100)
 
     # Add other objects for the assignment here.
+def drawCube():
+	x_axis = [[( 1.0,-1.0, 1.0),( 1.0, 1.0,-1.0),( 1.0,-1.0,-1.0)],[( 1.0,-1.0, 1.0),( 1.0, 1.0,-1.0),( 1.0, 1.0, 1.0)],[(-1.0,-1.0, 1.0),(-1.0, 1.0,-1.0),(-1.0,-1.0,-1.0)],[(-1.0,-1.0, 1.0),(-1.0, 1.0,-1.0),(-1.0, 1.0, 1.0)]]
+        y_axis = [[(-1.0, 1.0, 1.0),( 1.0, 1.0,-1.0),( 1.0, 1.0, 1.0)],[(-1.0, 1.0, 1.0),( 1.0, 1.0,-1.0),(-1.0, 1.0,-1.0)],[( 1.0,-1.0,-1.0),(-1.0,-1.0, 1.0),( 1.0,-1.0, 1.0)],[(-1.0,-1.0, 1.0),( 1.0,-1.0,-1.0),(-1.0,-1.0,-1.0)]]
+        z_axis = [[( 1.0,-1.0, 1.0),(-1.0, 1.0, 1.0),( 1.0, 1.0, 1.0)],[( 1.0,-1.0, 1.0),(-1.0, 1.0, 1.0),(-1.0,-1.0, 1.0)],[( 1.0,-1.0,-1.0),(-1.0, 1.0,-1.0),( 1.0, 1.0,-1.0)],[( 1.0,-1.0,-1.0),(-1.0, 1.0,-1.0),(-1.0,-1.0,-1.0)]]
 
+        sq = x_axis+y_axis+z_axis
 
+        draw(sq)
+def draw(ls):
+    i=0
+    while i < len(ls):
+        v = ls[i]
+        v1 = v[0]
+        v2 = v[1]
+        v3 = v[2]
+        triangle(v1[0],v1[1],v1[2],v2[0],v2[1],v2[2],v3[0],v3[1],v3[2])
+        i=i+1
 
+def triangle(x1,y1,z1,x2,y2,z2,x3,y3,z3):
+    r = (x1+x2+x3)/6 +.5
+    g = (y1+y2+y3)/6 +.5
+    b = (z1+z2+z3)/6 +.5
+    glColor3f(r,g,b)
+    glVertex3f(x1,y1,z1)
+    glVertex3f(x2,y2,z2)
+    glVertex3f(x3,y3,z3)
+
+def gen_cyllinder(n):
+    topcircle = []
+    bottomcircle = []
+    walls = []
+    p = 0
+    while p<n:
+        a = sin(p*2*pi/n)
+        b = cos(p*2*pi/n)
+        p=p+1
+        c = sin(p*2*pi/n)
+        d = cos(p*2*pi/n)
+        topcircle.append([(1,0,0),(1,a,b),(1,c,d)])
+        walls.append([(1,c,d),(1,a,b),(-1,c,d)])
+        bottomcircle.append([(-1,0,0),(-1,a,b),(-1,c,d)])
+        walls.append([(-1,a,b),(1,a,b),(-1,c,d)])
+    return (topcircle+bottomcircle+walls)
+
+def gen_sphere(n):
+    s = 0
+    ret = []
+    while s < n:
+        q = 1-(s/n)*2
+        r = 1-((s+1)/n)*2
+        p = 0
+        while p < n:
+            q1=(1-q**2)**0.5
+            r1=(1-r**2)**0.5
+            a = sin(p*2*pi/n)
+            b = cos(p*2*pi/n)
+            p=p+1
+            c = sin(p*2*pi/n)
+            d = cos(p*2*pi/n)
+            ret.append([(q,c*q1,d*q1),(q,a*q1,b*q1),(r,c*r1,d*r1)])
+            ret.append([(r,a*r1,b*r1),(q,a*q1,b*q1),(r,c*r1,d*r1)])
+        s=s+1
+    return ret
+	
 def drawScene():
     """ Issue GL calls to draw the scene. """
 
